@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.tuling</groupId>
+        <groupId>com.ww</groupId>
         <artifactId>springcloud-nacos-feign-seata-at</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.tuling</groupId>
+    <groupId>com.ww</groupId>
     <artifactId>storage-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>storage-service</name>
@@ -34,7 +34,7 @@
         <dependency>
             <groupId>com.alibaba.nacos</groupId>
             <artifactId>nacos-common</artifactId>
-            <version>2.1.0</version>
+            <version>1.1.4</version>
         </dependency>
     
         <dependency>
@@ -43,7 +43,7 @@
         </dependency>
     
         <dependency>
-            <groupId>com.tuling</groupId>
+            <groupId>com.ww</groupId>
             <artifactId>mysql-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>

@@ -8,6 +8,7 @@ spring:
     nacos:
       discovery:
         server-addr: 172.22.68.2:8848,172.22.69.2:8848,172.22.70.2:8848
+        namespace: 1d87c0e0-6950-45cb-b4ef-ed969eab7e49
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -44,7 +45,7 @@ spring:
 seata:
   application-id: ${spring.application.name}
   # seata 服务分组，要与服务端配置service.vgroup_mapping的后缀对应
-  tx-service-group: default_tx_group
+  tx-service-group: ${spring.application.name}-seata-service-group
   registry:
     # 指定nacos作为注册中心
     type: nacos
@@ -53,6 +54,7 @@ seata:
       server-addr: 172.22.68.2:8848,172.22.69.2:8848,172.22.70.2:8848
       namespace: 1d87c0e0-6950-45cb-b4ef-ed969eab7e49
       group: DEFAULT_GROUP
+      cluster: default
 
   config:
     # 指定nacos作为配置中心

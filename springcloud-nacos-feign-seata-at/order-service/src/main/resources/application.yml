@@ -7,15 +7,16 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 172.22.68.2:8848,172.22.69.2:8848,172.22.70.2:8848
+        namespace: 1d87c0e0-6950-45cb-b4ef-ed969eab7e49
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://172.22.68.20:3306/seata_at_order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://172.22.68.20:3306/seata-order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
       username: root
-      password: root
+      password: 123456
       initial-size: 10
       max-active: 100
       min-idle: 10
@@ -41,28 +42,29 @@ spring:
 
 logging:
   level:
-    com.tuling: debug
+    com.ww: debug
 
 seata:
   application-id: ${spring.application.name}
   # seata 服务分组，要与服务端配置service.vgroup_mapping的后缀对应
-  tx-service-group: default_tx_group
+  tx-service-group: ${spring.application.name}-seata-service-group
   registry:
     # 指定nacos作为注册中心
     type: nacos
     nacos:
       application: seata-server
-      server-addr: 127.0.0.1:8848
-      namespace:
-      group: SEATA_GROUP
+      server-addr: 172.22.68.2:8848,172.22.69.2:8848,172.22.70.2:8848
+      namespace: 1d87c0e0-6950-45cb-b4ef-ed969eab7e49
+      group: DEFAULT_GROUP
+      cluster: default
 
   config:
     # 指定nacos作为配置中心
     type: nacos
     nacos:
-      server-addr: 127.0.0.1:8848
-      namespace: 7e838c12-8554-4231-82d5-6d93573ddf32
-      group: SEATA_GROUP
+      server-addr: 172.22.68.2:8848,172.22.69.2:8848,172.22.70.2:8848
+      namespace: 1d87c0e0-6950-45cb-b4ef-ed969eab7e49
+      group: DEFAULT_GROUP
       data-id: seataServer.properties
 
 #暴露actuator端点
@@ -71,6 +73,6 @@ management:
     web:
       exposure:
         include: '*'
-feign:
-  sentinel:
-    enabled: true
+#feign:
+#  sentinel:
+#    enabled: true
